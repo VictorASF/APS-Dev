@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles_docente.css">
+    <title>Espaço Docente</title>
+</head>
+<body>
+    <div class='box-mmm'>
+        <div id='chart_div' class="box-chart"></div>
+        <div id='chart_maiorMenor' class='box-chart2'></div>
+    </div>
+    <script type="text/javascript" src='https://www.gstatic.com/charts/loader.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+    <script type="text/javascript">
+        let notasAV1 = [10, 6, 4, 8, 9]
+        let notasAV2 = [7, 8, 8.6, 7, 8]
+        let notasAV3 = [8, 9.5, 9, 6, 8.5]
+        function somar(notas){
+            let soma = 0 
+            for(let i in notas){
+                soma += notas[i]
+            }
+            return soma
+        }
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart(){
+            const media = new google.visualization.arrayToDataTable([
+                ['Avaliação', 'Nota-Media'],
+                ['AV1', somar(notasAV1)/notasAV1.length],
+                ['AV2', somar(notasAV2)/notasAV2.length],
+                ['AV3', somar(notasAV3)/notasAV3.length],
+            ]);
+            
+            var options = {
+            vAxis: {
+                title: 'Nota media por avaliação'
+                }
+            };
+            
+            const chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            chart.draw(media, options);
+        }
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart2);
+        function drawChart2(){
+            const maiorMenor = new google.visualization.arrayToDataTable([
+                ['Avaliação', 'Maior','Menor'],
+                ['AV1', _.max(notasAV1), _.min(notasAV1)],
+                ['AV2', _.max(notasAV2), _.min(notasAV2)],
+                ['AV3', _.max(notasAV3), _.min(notasAV3)],
+            ]);
+            
+            var options = {
+            vAxis: {
+                title: 'Maior e menor nota por avaliação'
+                }
+            };
+            
+            const chart = new google.visualization.ColumnChart(document.getElementById('chart_maiorMenor'));
+            chart.draw(maiorMenor, options);
+        }
+      
+        </script>
+</body>
+</html>

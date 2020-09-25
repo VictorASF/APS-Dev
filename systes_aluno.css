@@ -1,6 +1,9 @@
+body{
+    margin: 0px;
+    background: #FFFAF0;
+}
 .box-parent-boletim{
     height: 10em;
-    position: relative;
     
 }
 table{
@@ -11,10 +14,13 @@ table{
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+    background: white;
+    box-shadow: 1px 1px 5px #ccc;
 }
 .table-parent-head{
     border-style: solid;
     min-width: 240px;
+    
 }
 table th{
     border-style: solid;
@@ -30,4 +36,7 @@ table td{
 .head-box{
     border-style: solid;
     line-height: 200%;
+    background-color: white;
+    text-align: center;
+    box-shadow: 1px 1px 5px #ccc;
 }
