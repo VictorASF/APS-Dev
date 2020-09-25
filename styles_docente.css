@@ -4,6 +4,8 @@ body{
 button{
     margin: 5px;
     border: none;
+    background: rgb(216, 212, 203);
+    box-shadow: 1px 1px 5px #ccc;
     
 }
 label{
@@ -11,6 +13,14 @@ label{
     display: block;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+select{
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 .box-master{
     width: 100vw;
@@ -34,46 +44,54 @@ label{
 .box-docente-parent-create{
     width: 250px;
     height: 250px;
-    background: red;
     margin: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    background: #FFFAF0;
+    box-shadow: 1px 1px 5px #ccc;
+    border-radius: 10px ;
 }
 .box-docente-parent-read{
     width: 250px;
     height: 250px;
-    background: red;
     margin: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    background: #FFFAF0;
+    box-shadow: 1px 1px 5px #ccc;
+    border-radius: 10px ;
 }
 .box-docente-parent-update{
     width: 250px;
     height: 250px;
-    background: red;
     margin: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    background: #FFFAF0;
+    box-shadow: 1px 1px 5px #ccc;
+    border-radius: 10px ;
 }
 .box-docente-parent-delete{
     width: 250px;
     height: 250px;
-    background: red;
     margin: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    background: #FFFAF0;
+    box-shadow: 1px 1px 5px #ccc;
+    border-radius: 10px ;
 }
 .box-docente-bottom-parent-dashboard{
     width: 150px;
@@ -89,4 +107,10 @@ label{
 .box-docente-bottom-parent-dashboard a{
     text-decoration: none;
 }
-
+.box-docente-parent-radio{
+    display: flex;
+}
+.radio-box{
+    margin:0px ;
+    margin-bottom: 5px;
+}
