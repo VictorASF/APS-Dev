@@ -9,7 +9,12 @@
 <body>
     <div class='box-mmm'>
         <div id='chart_div' class="box-chart"></div>
-        <div id='chart_maiorMenor' class='box-chart2'></div>
+        <div id='chart_maiorMenor' class='box-chart'></div>          
+        <div id='chart_notasAV1' class='box-chart'></div>    
+        <div id='chart_notasAV2' class='box-chart'></div>
+        <div id='chart_notasAV3' class='box-chart'></div> 
+        
+        
     </div>
     <script type="text/javascript" src='https://www.gstatic.com/charts/loader.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
@@ -34,7 +39,7 @@
                 ['AV3', somar(notasAV3)/notasAV3.length],
             ]);
             
-            var options = {
+            const options = {
             vAxis: {
                 title: 'Nota media por avaliação'
                 }
@@ -53,7 +58,7 @@
                 ['AV3', _.max(notasAV3), _.min(notasAV3)],
             ]);
             
-            var options = {
+            const options = {
             vAxis: {
                 title: 'Maior e menor nota por avaliação'
                 }
@@ -62,7 +67,56 @@
             const chart = new google.visualization.ColumnChart(document.getElementById('chart_maiorMenor'));
             chart.draw(maiorMenor, options);
         }
-      
-        </script>
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart3);
+        function drawChart3(){
+            const data = google.visualization.arrayToDataTable([
+               ['Matricula', 'Nota'],
+               ['2017200563',  10],
+               ['2017200562',  6],
+               ['2017100432',  4],
+               ['2015200679', 8],
+               ['2016101456',  9],
+            ]);
+
+            const options = {title: 'Notas por Matricula (AV1)'};
+            const chart = new google.visualization.BarChart(document.getElementById('chart_notasAV1'));
+            chart.draw(data, options);
+        }
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart4);
+        function drawChart4(){
+            const data = google.visualization.arrayToDataTable([
+               ['Matricula', 'Nota'],
+               ['2017200563',  7],
+               ['2017200562',  8],
+               ['2017100432',  8.6],
+               ['2015200679', 7],
+               ['2016101456',  8],
+            ]);
+
+            const options = {title: 'Notas por Matricula (AV2)'};
+            const chart = new google.visualization.BarChart(document.getElementById('chart_notasAV2'));
+            chart.draw(data, options);
+        }
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart5);
+        function drawChart5(){
+            const data = google.visualization.arrayToDataTable([
+               ['Matricula', 'Nota'],
+               ['2017200563',  8],
+               ['2017200562',  9.5],
+               ['2017100432',  9],
+               ['2015200679', 6],
+               ['2016101456',  8.5],
+            ]);
+
+            const options = {title: 'Notas por Matricula (AV3)'};
+            const chart = new google.visualization.BarChart(document.getElementById('chart_notasAV3'));
+            chart.draw(data, options);
+
+        }
+        
+    </script>
 </body>
 </html>

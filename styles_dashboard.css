@@ -12,21 +12,13 @@ body{
 }
 .box-chart{
     width: 800px;
-    height: 300px;
+    height: 400px;
     margin-top: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-}
-.box-chart2{
-    width: 800px;
-    height: 300px;
-    margin-top: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    box-shadow: 1px 1px 5px #ccc;
+    
 }
