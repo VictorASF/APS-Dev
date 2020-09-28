@@ -13,6 +13,7 @@
         <div id='chart_notasAV1' class='box-chart'></div>    
         <div id='chart_notasAV2' class='box-chart'></div>
         <div id='chart_notasAV3' class='box-chart'></div> 
+        <div id='chart_desvio' class='box-chart'></div> 
         
         
     </div>
@@ -22,21 +23,32 @@
         let notasAV1 = [10, 6, 4, 8, 9]
         let notasAV2 = [7, 8, 8.6, 7, 8]
         let notasAV3 = [8, 9.5, 9, 6, 8.5]
-        function somar(notas){
+        function media(notas){
             let soma = 0 
             for(let i in notas){
                 soma += notas[i]
             }
-            return soma
+            return soma/notas.length
+        }
+        function desvioPadrao(med,notas){
+            let desvio = 0
+            for(let i in notas){
+                soma = Math.pow(notas[i]-med, 2);
+                desvio = desvio + soma;
+            }
+            
+            desvio = desvio/notas.length
+            desvio = Math.sqrt(desvio,2)
+            return desvio
         }
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
         function drawChart(){
-            const media = new google.visualization.arrayToDataTable([
+            const data = new google.visualization.arrayToDataTable([
                 ['Avaliação', 'Nota-Media'],
-                ['AV1', somar(notasAV1)/notasAV1.length],
-                ['AV2', somar(notasAV2)/notasAV2.length],
-                ['AV3', somar(notasAV3)/notasAV3.length],
+                ['AV1', media(notasAV1)],
+                ['AV2', media(notasAV2)],
+                ['AV3', media(notasAV3)],
             ]);
             
             const options = {
@@ -46,7 +58,7 @@
             };
             
             const chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-            chart.draw(media, options);
+            chart.draw(data, options);
         }
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart2);
@@ -116,7 +128,26 @@
             chart.draw(data, options);
 
         }
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart6);
+        function drawChart6(){
+            const data = new google.visualization.arrayToDataTable([
+                ['Avaliação', 'Desvio Padrão'],
+                ['AV1', desvioPadrao(7.2,notasAV1)],
+                ['AV2', desvioPadrao(7.72, notasAV2)],
+                ['AV3', desvioPadrao(8.2, notasAV3)],
+            ]);
+            
+            const options = {
+            vAxis: {
+                title: 'Desvio Padrão da turma toda'
+                }
+            };
+            
+            const chart = new google.visualization.ColumnChart(document.getElementById('chart_desvio'));
+            chart.draw(data, options);
         
+        }
     </script>
 </body>
 </html>
