@@ -13,7 +13,8 @@
         <div id='chart_notasAV1' class='box-chart'></div>    
         <div id='chart_notasAV2' class='box-chart'></div>
         <div id='chart_notasAV3' class='box-chart'></div> 
-        <div id='chart_desvio' class='box-chart'></div> 
+        <div id='chart_desvio' class='box-chart'></div>
+        <div id='chart_hist' class='box-chart'></div>  
         
         
     </div>
@@ -21,7 +22,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
     <script type="text/javascript">
         let notasAV1 = [10, 6, 4, 8, 9]
-        let notasAV2 = [7, 8, 8.6, 7, 8]
+        let notasAV2 = [7, 8, 8.6, 7, 8]    
         let notasAV3 = [8, 9.5, 9, 6, 8.5]
         function media(notas){
             let soma = 0 
@@ -133,9 +134,9 @@
         function drawChart6(){
             const data = new google.visualization.arrayToDataTable([
                 ['Avaliação', 'Desvio Padrão'],
-                ['AV1', desvioPadrao(7.2,notasAV1)],
-                ['AV2', desvioPadrao(7.72, notasAV2)],
-                ['AV3', desvioPadrao(8.2, notasAV3)],
+                ['AV1', desvioPadrao(media(notasAV1),notasAV1)],
+                ['AV2', desvioPadrao(media(notasAV2), notasAV2)],
+                ['AV3', desvioPadrao(media(notasAV3), notasAV3)],
             ]);
             
             const options = {
@@ -147,6 +148,28 @@
             const chart = new google.visualization.ColumnChart(document.getElementById('chart_desvio'));
             chart.draw(data, options);
         
+        }
+
+        google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart7);
+      function drawChart7() {
+        var data = google.visualization.arrayToDataTable([
+            ['Media aluno', 'Nota'],
+            ['2017200563',  8.3],
+            ['2017200562',  7.8],
+            ['2017100432',  7.2],
+            ['2015200679',  7],
+            ['2016101456',  8.5],
+        ])
+         
+
+        var options = {
+          title: 'Media dos Alunos por matricula',
+          legend: { position: 'none' },
+        };
+
+        var chart = new google.visualization.Histogram(document.getElementById('chart_hist'));
+        chart.draw(data, options);
         }
     </script>
 </body>
